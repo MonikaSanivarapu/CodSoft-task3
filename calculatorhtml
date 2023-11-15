@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styled Calculator</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f1ffca;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 300px;
+      margin-top: 20px;
+      background-color: #000000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      font-size: 16px;
+      text-align: right;
+      border: none;
+      outline: none;
+    }
+
+    input[type="button"] {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      font-size: 16px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: #fff;
+    }
+
+    input[type="button"]:hover {
+      background-color: #45a049;
+    }
+
+    input[type="button"]:active {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>CALCULATOR</h1>
+  <table border="3" cellpadding="20px" cellspacing="0px" align="center">
+    <tr>
+      <td colspan="4"><input type="text" id="inp1"></td>
+    </tr>
+    <tr>
+      <td><input type="button" value="/" onclick="displayData('/')"></td>
+      <td><input type="button" value="" onclick="displayData('')"></td>
+      <td><input type="button" value="-" onclick="displayData('-')"></td>
+      <td><input type="button" value="+" onclick="displayData('+')"></td>
+    </tr>
+    <tr>
+      <td><input type="button" value="9" onclick="displayData('9')"></td>
+      <td><input type="button" value="8" onclick="displayData('8')"></td>
+      <td><input type="button" value="7" onclick="displayData('7')"></td>
+      <td rowspan="3"><input type="button" value="=" onclick="calculation()" id="equal"></td>
+    </tr>
+    <tr>
+      <td><input type="button" value="6" onclick="displayData('6')"></td>
+      <td><input type="button" value="5" onclick="displayData('5')"></td>
+      <td><input type="button" value="4" onclick="displayData('4')"></td>
+    </tr>
+    <tr>
+      <td><input type="button" value="3" onclick="displayData('3')"></td>
+      <td><input type="button" value="2" onclick="displayData('2')"></td>
+      <td><input type="button" value="1" onclick="displayData('1')"></td>
+    </tr>
+    <tr>
+      <td><input type="button" value="0" onclick="displayData('0')"></td>
+      <td><input type="button" value="." onclick="displayData('.')"></td>
+      <td><input type="button" value="clr" onclick="clear1()"></td>
+      <td><input type="button" value="del" onclick="delete1()"></td>
+    </tr>
+  </table>
+
+  <script>
+    function displayData(data) {
+      document.querySelector("#inp1").value += data;
+    }
+
+    function calculation() {
+      let num = document.querySelector("#inp1").value;
+      console.log(num);
+      let a = eval(num);
+      console.log(a);
+      document.querySelector("#inp1").value = a;
+    }
+
+    function clear1() {
+      document.querySelector("#inp1").value = "";
+    }
+
+    function delete1() {
+      let res = document.querySelector("#inp1");
+      res.value = res.value.slice(0, -1);
+    }
+  </script>
+</body>
+</html>
